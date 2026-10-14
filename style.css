@@ -18,3 +18,16 @@ nav a {
     margin: 2px 8px;
     color: rgb(66, 9, 9);
 }
+
+nav a.active {
+    background-color: antiquewhite;
+    font-weight: bold;
+}
+
+table, th, td {
+    border: 1px solid #333;
+}
+
+td {
+    text-align: center;
+}
