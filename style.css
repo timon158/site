@@ -6,4 +6,15 @@ h2 {
     text-align: center;
 }
 
+nav {
+    width: fit-content;
+    text-align: center;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background-color: coral;
+}
 
+nav a {
+    margin: 2px 8px;
+    color: rgb(66, 9, 9);
+}
