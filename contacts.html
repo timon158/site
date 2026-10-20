@@ -8,6 +8,9 @@
 </head>
 <body>
     <nav id="top">
+        <a href="history.html#trac">Путь кофе по миру</a>
+        <a href="https://ru.wikipedia.org/wiki/Кофе" target="_blank">Википедия</a>
+        <a href="index.html"><img src="images/image1.jpeg" height="20" alt="Логотип"></a>
         <a href="index.html">Главная</a>
         <a href="history.html">История</a>
         <a href="sorts.html">Сорта</a>
@@ -15,17 +18,20 @@
         <a href="contacts.html" class="active">Контакты</a>
         <a href="order.html">Оформить заказ</a>
         <a href="passport.html">Паспорт</a>
-        <a href="translit.html">Транслитерация</a>
+        <a href="translit.html">Изменяем кириллицу на латиницу по клику</a>
         <a href="algorithm.html">Алгоритмическая задача</a>
     </nav>
     <div>
         <p>Если у вас остались вопросы напишите нам:</p>
-        <form action="https://www.bing.com/search" method="get" target="_blank" style="margin: 0 auto"></form>
-            <input type="text" name="fio" placeholder="ФИО" required>
+        <form action="https://www.bing.com/search" method="get" target="_blank">
+            <input type="text" name="surname" placeholder="Фамилия" required>
+            <input type="text" name="first_name" placeholder="Имя" required>
+            <input type="text" name="group" placeholder="Группа" required>
+            <input type="tel" name="phone" placeholder="Мобильный телефон" required>
             <input type="email" name="email" placeholder="Эл. почта" required>
-            <input type="tel" name="phone" placeholder="Номер телефона" required>
+            <input type="date" name="send_date" required>
             <br>
-            <textarea name="message" rows="10" cols="18" placeholder="Можете оставить ваше обращение тут" style="width: 443px; height: 36px;"></textarea>
+            <textarea name="message" placeholder="Ваше обращение"></textarea>
             <button type="submit">Отправить</button>
         </form>
     </div>
