@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="js-pages.css">
+    <title>DOM_JS. Считываем информацию из DOM</title>
+</head>
+<body>
+    <nav id="top">
+        <a href="index.html">Главная</a>
+        <a href="history.html">История</a>
+        <a href="sorts.html">Сорта</a>
+        <a href="brewing.html">Заваривание</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="order.html">Оформить заказ</a>
+        <a href="passport.html" class="active">Паспорт</a>
+        <a href="translit.html">Транслитерация</a>
+        <a href="algorithm.html">Алгоритмическая задача</a>
+    </nav>
+    <h2>Данные паспорта</h2>
+    <table id="passport">
+        <tr><th>Поле</th><th>Значение</th></tr>
+        <tr><td>Фамилия</td><td data-field="Фамилия">Хребтов</td></tr>
+        <tr><td>Имя</td><td data-field="Имя">Тимофей</td></tr>
+        <tr><td>Отчество</td><td data-field="Отчество">Алексеевич</td></tr>
+        <tr><td>Дата рождения</td><td data-field="Дата рождения">15.05.2007</td></tr>
+        <tr><td>Место рождения</td><td data-field="Место рождения">Москва</td></tr>
+        <tr><td>Серия и номер</td><td data-field="Серия и номер">7777 777777</td></tr>
+    </table>
+</body>
+</html>

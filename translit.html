@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="js-pages.css">
+    <title>Транслитерация</title>
+</head>
+<body>
+    <nav id="top">
+        <a href="index.html">Главная</a>
+        <a href="history.html">История</a>
+        <a href="sorts.html">Сорта</a>
+        <a href="brewing.html">Заваривание</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="order.html">Оформить заказ</a>
+        <a href="passport.html">Паспорт</a>
+        <a href="translit.html" class="active">Транслитерация</a>
+        <a href="algorithm.html">Алгоритмическая задача</a>
+    </nav>
+    <h2>Кириллица → латиница</h2>
+    <table id="passport">
+        <tr><th>Поле</th><th>Значение</th></tr>
+        <tr><td>Фамилия</td><td class="tr">Хребтов</td></tr>
+        <tr><td>Имя</td><td class="tr">Тимофей</td></tr>
+        <tr><td>Отчество</td><td class="tr">Алексеевич</td></tr>
+        <tr><td>Место рождения</td><td class="tr">Москва</td></tr>
+    </table>
+    <div class="box">
+        <button id="toggle">Сменить на латиницу</button>
+    </div>
+    <script>
+
+        const MAP = {
+            "а": "a", "б": "b", "в": "v", "г": "g", "д": "d", "е": "e", "ё": "e",
+            "ж": "zh", "з": "z", "и": "i", "й": "i", "к": "k", "л": "l", "м": "m",
+            "н": "n", "о": "o", "п": "p", "р": "r", "с": "s", "т": "t", "у": "u",
+            "ф": "f", "х": "kh", "ц": "ts", "ч": "ch", "ш": "sh", "щ": "shch",
+            "ъ": "ie", "ы": "y", "ь": "", "э": "e", "ю": "iu", "я": "ia"
+        };
+
+        function transliterate(text) {
+            let result = "";
+            for (const ch of text) {
+                const lower = ch.toLowerCase();
+                if (!(lower in MAP)) {
+                    result += ch; // цифры, пробелы, знаки и латиница остаются как есть
+                    continue;
+                }
+                const latin = MAP[lower];
+                // Если буква была заглавной, заглавной делаем первую латинскую букву
+                const isUpper = ch !== lower;
+                result += isUpper ? latin.charAt(0).toUpperCase() + latin.slice(1) : latin;
+            }
+            return result;
+        }
+
+        const cells = document.querySelectorAll(".tr");
+        const button = document.getElementById("toggle");
+        let isLatin = false;
+
+        // Запоминаем оригинал, чтобы можно было вернуть кириллицу
+        cells.forEach(function (cell) {
+            cell.dataset.original = cell.textContent;
+        });
+
+        button.addEventListener("click", function () {
+            isLatin = !isLatin;
+            cells.forEach(function (cell) {
+                cell.textContent = isLatin ? transliterate(cell.dataset.original) : cell.dataset.original;
+            });
+            button.textContent = isLatin ? "Вернуть кириллицу" : "Сменить на латиницу";
+        });
+    </script>
+</body>
+</html>

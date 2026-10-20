@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="js-pages.css">
+    <title>Алгоритмическая задача</title>
+</head>
+<body>
+    <nav id="top">
+        <a href="index.html">Главная</a>
+        <a href="history.html">История</a>
+        <a href="sorts.html">Сорта</a>
+        <a href="brewing.html">Заваривание</a>
+        <a href="contacts.html">Контакты</a>
+        <a href="order.html">Оформить заказ</a>
+        <a href="passport.html">Паспорт</a>
+        <a href="translit.html">Транслитерация</a>
+        <a href="algorithm.html" class="active">Алгоритмическая задача</a>
+    </nav>
+    <h2>Вычисление Z = 1 / (X · Y)</h2>
+    <div class="box">
+        <input type="text" id="x" placeholder="X" inputmode="decimal"><br>
+        <input type="text" id="y" placeholder="Y" inputmode="decimal"><br>
+        <button id="calc">Вычислить</button>
+        <p class="result" id="result"></p>
+    </div>
+    <script>
+        // Читает число из текстового поля. Возвращает NaN, если ввод некорректен.
+        function readNumber(input) {
+            const text = input.value.trim().replace(",", ".");
+            if (text === "") {
+                return NaN; // Number("") равно 0, поэтому пустую строку проверяем отдельно
+            }
+            return Number(text);
+        }
+
+        // Чистая функция алгоритма: возвращает {ok, text}
+        function computeZ(x, y) {
+            if (!Number.isFinite(x) || !Number.isFinite(y)) {
+                return { ok: false, text: "Введите в оба поля корректные числа." };
+            }
+            if (x === 0 || y === 0) {
+                return { ok: false, text: "Z не определено: X·Y = 0, на ноль делить нельзя." };
+            }
+            // (1/X)/Y вместо 1/(X*Y): произведение X*Y может переполниться или обнулиться
+            // раньше, чем получится ответ.
+            const z = 1 / x / y;
+            if (!Number.isFinite(z)) {
+                return { ok: false, text: "Результат слишком велик для представления числом." };
+            }
+            if (z === 0) {
+                return { ok: true, text: "Z ≈ 0 (результат слишком мал и округлён до нуля)." };
+            }
+            return { ok: true, text: "Z = " + z };
+        }
+
+        const xInput = document.getElementById("x");
+        const yInput = document.getElementById("y");
+        const resultEl = document.getElementById("result");
+
+        document.getElementById("calc").addEventListener("click", function () {
+            const res = computeZ(readNumber(xInput), readNumber(yInput));
+            resultEl.textContent = res.text;
+            resultEl.className = res.ok ? "result" : "result error";
+        });
+    </script>
+</body>
+</html>
